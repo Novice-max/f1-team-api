@@ -33,11 +33,11 @@ A complete Formula 1 team management system built with **Spring Boot**, **JPA/Hi
 ### Cars
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/cars` | Get all F1 cars |
-| GET | `/api/cars/{id}` | Get car by ID |
-| POST | `/api/cars` | Create new car |
-| PUT | `/api/cars/{id}` | Update car |
-| DELETE | `/api/cars/{id}` | Delete car |
+| GET | `/api/F1Cars` | Get all F1 cars |
+| GET | `/api/F1Cars/{id}` | Get car by ID |
+| POST | `/api/F1Cars` | Create new car |
+| PUT | `/api/F1Cars/{id}` | Update car |
+| DELETE | `/api/F1Cars/{id}` | Delete car |
 
 ### Race Strategies
 | Method | Endpoint | Description |
@@ -141,8 +141,8 @@ CREATE DATABASE f1_team_system_db;
 3. Configure database connection in `src/main/resources/application.properties`:
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/f1_team_system_db
-spring.datasource.username=your_username
-spring.datasource.password=your_password
+spring.datasource.username=your_username(replace with actual!)
+spring.datasource.password=your_password(replace with actual!)
 ```
 
 4. Run the application:
