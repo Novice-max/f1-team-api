@@ -2,6 +2,8 @@ package com.f1system.f1_team_api.Service;
 
 import com.f1system.f1_team_api.model.Team;
 import com.f1system.f1_team_api.Repository.TeamRepository;
+import com.f1system.f1_team_api.exception.ResourceNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ public class TeamService {
     }
 
     public Team getTeam(int id) {
-        return teamRepository.findById(id).orElse(null);
+        return teamRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Team with ID " + id + " not found"));
     }
 
     public Team insertTeam(Team team) {

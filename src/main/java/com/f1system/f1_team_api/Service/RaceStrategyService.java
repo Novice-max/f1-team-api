@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.f1system.f1_team_api.Repository.RaceStrategyRepository;
+import com.f1system.f1_team_api.exception.ResourceNotFoundException;
 
 @Service    
 public class RaceStrategyService {
@@ -14,7 +15,7 @@ public class RaceStrategyService {
         return raceStrategyRepository.findAll();
       }
       public RaceStrategy getRaceStrategy(int id){
-        return raceStrategyRepository.findById(id).orElse(null);
+        return raceStrategyRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Strategy with ID " + id + " not found"));
       }
       public RaceStrategy insertRaceStrategy(RaceStrategy raceStrategy){
         return raceStrategyRepository.save(raceStrategy);
