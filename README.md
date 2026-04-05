@@ -66,6 +66,62 @@ A complete Formula 1 team management system built with **Spring Boot**, **JPA/Hi
 | PUT | `/api/races/{id}` | Update race |
 | DELETE | `/api/races/{id}` | Delete race |
 
+## Security
+
+This API is secured with **JWT (JSON Web Token)** authentication.
+
+### How it works
+All endpoints except `/api/auth/login` require a valid JWT token.
+
+### Login
+```http
+POST /api/auth/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "password123"
+}
+```
+
+**Response:**
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiJ9..."
+}
+```
+
+### Using the token
+Include the token in every subsequent request:
+```
+Authorization: Bearer <your-token>
+```
+
+### Without token
+```json
+HTTP 403 Forbidden
+```
+
+## Error Handling
+
+All errors return a consistent JSON response:
+```json
+{
+    "timestamp": "2026-04-05T10:30:00",
+    "status": 404,
+    "error": "Not Found",
+    "message": "Team with ID 999 not found"
+}
+```
+
+| Status Code | Meaning |
+|-------------|---------|
+| 200 | Success |
+| 401 | Invalid credentials |
+| 403 | Missing or invalid token |
+| 404 | Resource not found |
+| 500 | Internal server error |
+
 ## Database Schema
 
 ```
